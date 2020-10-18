@@ -1,0 +1,207 @@
+<!--adding the base.html and converting them into according to your requirement-->
+{%extends "base.html"%}
+ {% block content%}
+<div>
+  <div class="container">
+            <div class="row">
+                <div class="col-md-10 " style="text-align:center">
+                    <p> Please provide your feedback below: </p>
+                </div>
+            </div>
+                    <form role="form" method="post" id="reused_form" enctype='multipart/form-data' action="{% url 'appointment_name' %}">
+                        <div class="row">
+                            <div class="col-lg-10 form-group " style="text-align: center;">
+                                <label for="name" > Your Name:</label>
+                                <input type="text"  class="form-control " id="name" name="name" size="35" style="width:400px">
+                                <center></center>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=" form-group" style="text-align: center;">
+                                <label for="email"> Email:</label>
+                                <input type="email" class="form-control col-md-10" id="email" name="email" required>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 form-group" style="text-align: center;">
+                                <label for="password"> password:</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="col-sm-6 form-group" style="text-align: center;">
+                                <label for="mobile"> phonenumber:</label>
+                                <input name="mobile"  id="mobile" type="number" required onkeyup="check(); return false;" ><span id="message"></span>
+                            </div>
+                            <!--<div class="col-sm-6 form-group" required onkeyup="initSelectors(); return false;" >-->
+                                <!--&lt;!&ndash;<label for="State"> phonenumber:</label>&ndash;&gt;-->
+                                <!--<select name="cars">-->
+                                  <!--<option value="State">State</option>-->
+                                  <!--<option value="TamilNaidu">TamilNaidu</option>-->
+                                  <!--<option value="Goa">Goa</option>-->
+                                  <!--<option value="Andhra">Andhra</option>-->
+                                  <!--<option value="Delhi">Delhi</option>-->
+                                  <!--<option value="Kerala">Kerala</option>-->
+                                  <!--<option value="Orissa">Orissa</option>-->
+                                <!--</select>-->
+                                <!--<select id="selectstates"></select>-->
+                                <!--<br>-->
+                                <!--</div>-->
+                            <div class="col-sm-6 form-group" style="text-align: center;" >
+                            <h6>States</h6>
+                            <select class="form-control"  id='statelocation' name='statelocation' onClick="getStates()">
+                            </select>
+                            </div>
+                            <div class="col-sm-6 form-group" style="text-align: center;">
+                            <h6>Locations</h6>
+                            <select class="form-control"  id='citylocation' name='citylocation' >
+                            </select>
+                            </div>
+                            <div>
+                            <label for="Time"> Timings:</label>
+                            <select class="form-control" id='time' name="time">
+                            <option value="00:00">12.00 AM</option>
+                            <option value="01:00">01.00 AM</option>
+                            <option value="02:00">02.00 AM</option>
+                            <option value="03:00">03.00 AM</option>
+                            <option value="04:00">04.00 AM</option>
+                            <option value="05:00">05.00 AM</option>
+                            <option value="06:00">06.00 AM</option>
+                            <option value="07:00">07.00 AM</option>
+                            <option value="08:00">08.00 AM</option>
+
+                            <option value="09:00">09.00 AM</option>
+
+                            <option value="10:00">10.00 AM</option>
+
+                            <option value="11:00">11.00 AM</option>
+
+                            <option value="12:00">12.00 PM</option>
+
+                            <option value="13:00">01.00 PM</option>
+
+                            <option value="14:00">02.00 PM</option>
+
+                            <option value="15:00">03.00 PM</option>
+
+                            <option value="16:00">04.00 PM</option>
+
+                            <option value="17:00">05.00 PM</option>
+                            <option value="18:00">06.00 PM</option>
+
+                            <option value="19:00" selected="">07.00 PM</option>
+
+                            <option value="20:00">08.00 PM</option>
+                            <option value="21:00">09.00 PM</option>
+                            <option value="22:00">10.00 PM</option>
+                            <option value="23:00">11.00 PM</option>
+                            </select>
+                            </div>
+                            <!--<div class="col-sm-6 form-group">-->
+                                <!--<label for="price"> price:</label>-->
+                                <!--<input type="text"  id="price" name="price" >-->
+                            <!--</div>-->
+                        </div>
+                        {{email}}
+                        <div class="row" style="text-align: center;">
+                            <div class="col-sm-12 form-group">
+                                <button type="submit" class="btn btn-lg btn-primary btn-block" >Send &rarr;</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Posted your feedback successfully!</h3> </div>
+                    <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+</div>
+
+
+<script>
+function check()
+{
+
+    var pass1 = document.getElementById('mobile');
+
+
+    var message = document.getElementById('message');
+
+   var goodColor = "#0C6";
+    var badColor = "#FF9B37";
+
+    if(mobile.value.length!=10){
+
+        mobile.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = "required 10 digits, match requested format!"
+    }
+    else{
+     message.innerHTML=""
+    }
+    }
+   </script>
+
+<script>
+<!--$(document).ready(function () {-->
+
+var list1 = document.getElementById('statelocation');
+console.log("hi");
+
+list1.options[0] = new Option('--Select--', '');
+list1.options[1] = new Option('Andhra', 'Andhra');
+list1.options[2] = new Option('Telangana', 'Telangana');
+
+<!--});-->
+function getStates(){
+            console.log("test");
+
+            var list1 = document.getElementById('statelocation');
+            console.log(list1);
+            var list2 = document.getElementById("citylocation");
+            var list1SelectedValue = list1.options[list1.selectedIndex].value;
+
+            if (list1SelectedValue=='Andhra')
+            {
+
+                list2.options.length=0;
+                list2.options[0] = new Option('--Select--', '');
+                list2.options[1] = new Option('vizag', 'vizag');
+                list2.options[2] = new Option('vijawada', 'vijawada');
+                list2.options[3] = new Option('nellore', 'nellore');
+                list2.options[4] = new Option('Guntur', 'Guntur');
+
+            }
+            else if (list1SelectedValue=='Telangana')
+            {
+
+                list2.options.length=0;
+                list2.options[0] = new Option('--Select--', '');
+                list2.options[1] = new Option('hyderabad', 'hyderabad');
+                list2.options[2] = new Option('rangareddy', 'rangareddy');
+            }
+}
+</script>
+<script>
+var inputEle = document.getElementById('timeInput');
+function onTimeChange() {
+  var timeSplit = inputEle.value.split(':'),
+    hours,
+    minutes,
+    meridian;
+  hours = timeSplit[0];
+  minutes = timeSplit[1];
+  if (hours > 12) {
+    meridian = 'PM';
+    hours -= 12;
+  } else if (hours < 12) {
+    meridian = 'AM';
+    if (hours == 0) {
+      hours = 12;
+    }
+  } else {
+    meridian = 'PM';
+  }
+  alert(hours + ':' + minutes + ' ' + meridian);
+}
+</script>
+
+{%endblock%}

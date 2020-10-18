@@ -1,0 +1,8 @@
+<!--adding the base.html and converting them into according to your requirement-->
+{%extends "base.html"%}
+ {% block content%}
+
+<form method="post" action="{% url 'custom_name' %}" name="paytm">
+        <button type="submit" name="checkout" class="btn btn-primary" >Paynow</button>
+      </form>
+  {%endblock%}

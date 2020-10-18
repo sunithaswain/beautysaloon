@@ -1,0 +1,36 @@
+<!--adding the base.html and converting them into according to your requirement-->
+{%extends "base.html"%}
+ {% block content%}
+<div>
+    <table align='center'>
+			<tr>
+				<td><STRONG>Transaction is being processed,</STRONG></td>
+			</tr>
+			<tr>
+				<td><font color='blue'>Please wait ...</font></td>
+			</tr>
+			<tr>
+				<td>(Please do not press 'Refresh' or 'Back' button</td>
+			</tr>
+		</table>
+</div>
+<FORM NAME='TESTFORM'  METHOD='POST' action="{% url 'callback_name' %}">
+			<input type='hidden' name='CURRENCY' value='INR'>
+			<input type='hidden' name='GATEWAYNAME' value='WALLET'>
+			<input type='hidden' name='RESPMSG' value='Your payment has been declined by your bank. Please contact your bank for any queries. If money has been deducted from your account, your bank will inform us within 48 hrs and we will refund the same.'>
+			<input type='hidden' name='BANKNAME' value='SBI'>
+			<input type='hidden' name='PAYMENTMODE' value='CC'>
+			<input type='hidden' name='MID' value='Rujjjt58970680859206'>
+			<input type='hidden' name='RESPCODE' value='01'>
+			<input type='hidden' name='TXNID' value='0001'>
+			<input type='hidden' name='TXNAMOUNT' value='30'>
+			<input type='hidden' name='ORDERID' value='10201153937'>
+			<input type='hidden' name='STATUS' value='PENDING'>
+			<input type='hidden' name='BANKTXNID' value='0012'>
+			<input type='hidden' name='TXNDATE' value="2015-11- 02 11:40:46.0">
+			<input type='hidden' name='CHECKSUMHASH' value='ZDBlNDEzMDYyZjIxMTBkYjQwMDI1ZGYwOWM0M2Q0NDkyNDZmNmI0MTQ0ZmE4MjA0M2ViMTJmODM3NDRiNWViZGhjeUQMDAwMDAwMDAwMDAw='>
+</FORM>
+<script type="text/javascript">
+<!--document.forms[0].submit();-->
+</script>
+{%endblock%}
